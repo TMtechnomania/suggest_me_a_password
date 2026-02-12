@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Icon Generator</title>
+	</head>
+	<body>
+		<h3>Click each button to download the icon</h3>
+		<canvas id="c" style="display: none"></canvas>
+		<button onclick="gen(16)">Download 16x16</button>
+		<button onclick="gen(48)">Download 48x48</button>
+		<button onclick="gen(128)">Download 128x128</button>
+		<script>
+			function gen(size) {
+				const c = document.getElementById("c");
+				c.width = size;
+				c.height = size;
+				const ctx = c.getContext("2d");
+
+				// Background gradient
+				const grad = ctx.createLinearGradient(0, 0, size, size);
+				grad.addColorStop(0, "#7c3aed");
+				grad.addColorStop(1, "#4c1d95");
+
+				// Rounded rect background
+				const r = size * 0.18;
+				ctx.beginPath();
+				ctx.moveTo(r, 0);
+				ctx.lineTo(size - r, 0);
+				ctx.quadraticCurveTo(size, 0, size, r);
+				ctx.lineTo(size, size - r);
+				ctx.quadraticCurveTo(size, size, size - r, size);
+				ctx.lineTo(r, size);
+				ctx.quadraticCurveTo(0, size, 0, size - r);
+				ctx.lineTo(0, r);
+				ctx.quadraticCurveTo(0, 0, r, 0);
+				ctx.closePath();
+				ctx.fillStyle = grad;
+				ctx.fill();
+
+				// Lock icon
+				ctx.strokeStyle = "white";
+				ctx.fillStyle = "white";
+				ctx.lineWidth = Math.max(1, size * 0.06);
+				ctx.lineCap = "round";
+				ctx.lineJoin = "round";
+
+				const cx = size / 2;
+				const cy = size / 2;
+				const s = size * 0.22;
+
+				// Lock body
+				const bodyW = s * 1.6;
+				const bodyH = s * 1.2;
+				const bodyX = cx - bodyW / 2;
+				const bodyY = cy - bodyH / 2 + s * 0.3;
+				const bodyR = s * 0.2;
+				ctx.beginPath();
+				ctx.moveTo(bodyX + bodyR, bodyY);
+				ctx.lineTo(bodyX + bodyW - bodyR, bodyY);
+				ctx.quadraticCurveTo(
+					bodyX + bodyW,
+					bodyY,
+					bodyX + bodyW,
+					bodyY + bodyR,
+				);
+				ctx.lineTo(bodyX + bodyW, bodyY + bodyH - bodyR);
+				ctx.quadraticCurveTo(
+					bodyX + bodyW,
+					bodyY + bodyH,
+					bodyX + bodyW - bodyR,
+					bodyY + bodyH,
+				);
+				ctx.lineTo(bodyX + bodyR, bodyY + bodyH);
+				ctx.quadraticCurveTo(
+					bodyX,
+					bodyY + bodyH,
+					bodyX,
+					bodyY + bodyH - bodyR,
+				);
+				ctx.lineTo(bodyX, bodyY + bodyR);
+				ctx.quadraticCurveTo(bodyX, bodyY, bodyX + bodyR, bodyY);
+				ctx.closePath();
+				ctx.stroke();
+
+				// Lock shackle
+				const shackleW = s * 0.9;
+				ctx.beginPath();
+				ctx.arc(cx, bodyY, shackleW / 2, Math.PI, 0);
+				ctx.stroke();
+
+				// Keyhole
+				const khR = s * 0.18;
+				ctx.beginPath();
+				ctx.arc(cx, bodyY + bodyH * 0.4, khR, 0, Math.PI * 2);
+				ctx.fill();
+				ctx.fillRect(
+					cx - khR * 0.4,
+					bodyY + bodyH * 0.4,
+					khR * 0.8,
+					bodyH * 0.3,
+				);
+
+				// Download
+				const link = document.createElement("a");
+				link.download = "icon" + size + ".png";
+				link.href = c.toDataURL("image/png");
+				link.click();
+			}
+		</script>
+	</body>
+</html>

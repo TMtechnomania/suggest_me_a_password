@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Suggest Me a Password</title>
+		<link rel="stylesheet" href="popup.css" />
+	</head>
+	<body>
+		<div class="popup-container">
+			<div class="popup-header">
+				<div class="popup-logo">
+					<img
+						src="icons/icon48.png"
+						alt="Logo"
+						width="24"
+						height="24" />
+				</div>
+				<div class="popup-title-group">
+					<h1 class="popup-title">Suggest Me a Password</h1>
+					<p class="popup-subtitle">Privacy-first generator</p>
+				</div>
+			</div>
+
+			<div class="popup-section">
+				<div class="mode-toggle">
+					<button class="mode-btn active" id="modeStandard">
+						🔐 Secure
+					</button>
+					<button class="mode-btn" id="modeMemorable">
+						🧠 Memorable
+					</button>
+				</div>
+			</div>
+
+			<div class="popup-section">
+				<div class="password-display" id="passwordDisplay">
+					<span class="password-text" id="passwordText"></span>
+				</div>
+				<div class="strength-row">
+					<div class="strength-bar">
+						<div class="strength-fill" id="strengthFill"></div>
+					</div>
+					<span class="strength-label" id="strengthLabel"></span>
+				</div>
+			</div>
+
+			<div class="popup-section">
+				<div class="action-row">
+					<button class="action-btn primary" id="btnCopy">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 16 16"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round">
+							<rect x="5" y="5" width="8" height="8" rx="1.5" />
+							<path d="M3 11V3.5A.5.5 0 0 1 3.5 3H11" />
+						</svg>
+						Copy
+					</button>
+					<button class="action-btn secondary" id="btnRefresh">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 16 16"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round">
+							<path d="M2 8a6 6 0 0 1 10.3-4.2" />
+							<path d="M14 2v4h-4" />
+							<path d="M14 8a6 6 0 0 1-10.3 4.2" />
+							<path d="M2 14v-4h4" />
+						</svg>
+						Refresh
+					</button>
+				</div>
+			</div>
+
+			<div class="popup-section options-section" id="optionsSection">
+				<div class="option-row">
+					<span class="option-label">Length</span>
+					<div class="slider-group">
+						<input
+							type="range"
+							class="option-slider"
+							id="sliderLength"
+							min="8"
+							max="32"
+							value="16" />
+						<input
+							type="number"
+							class="slider-value-input"
+							id="sliderLengthVal"
+							min="8"
+							max="32"
+							value="16" />
+					</div>
+				</div>
+				<div class="option-row">
+					<span class="option-label">Uppercase A-Z</span>
+					<label class="toggle"
+						><input type="checkbox" id="toggleUpper" checked /><span
+							class="toggle-slider"></span
+					></label>
+				</div>
+				<div class="option-row">
+					<span class="option-label">Lowercase a-z</span>
+					<label class="toggle"
+						><input type="checkbox" id="toggleLower" checked /><span
+							class="toggle-slider"></span
+					></label>
+				</div>
+				<div class="option-row">
+					<span class="option-label">Digits 0-9</span>
+					<label class="toggle"
+						><input
+							type="checkbox"
+							id="toggleDigits"
+							checked /><span class="toggle-slider"></span
+					></label>
+				</div>
+				<div class="option-row">
+					<span class="option-label">Symbols !@#$</span>
+					<label class="toggle"
+						><input
+							type="checkbox"
+							id="toggleSymbols"
+							checked /><span class="toggle-slider"></span
+					></label>
+				</div>
+			</div>
+
+			<div class="popup-footer">
+				<span class="footer-text"
+					>🔒 Generated locally. Never transmitted.</span
+				>
+			</div>
+		</div>
+
+		<script src="generator.js"></script>
+		<script src="popup.js"></script>
+	</body>
+</html>

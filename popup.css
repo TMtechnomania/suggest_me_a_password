@@ -1,0 +1,325 @@
+/* popup.css – Popup extension styling */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 340px;
+    min-height: 100px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #131920;
+    color: #e0e0e0;
+    overflow: hidden;
+}
+
+.popup-container {
+    padding: 16px;
+}
+
+/* Header */
+.popup-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.popup-logo {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.popup-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f0f0f0;
+    letter-spacing: 0.2px;
+}
+
+.popup-subtitle {
+    font-size: 11px;
+    color: #888;
+    margin-top: 1px;
+}
+
+/* Sections */
+.popup-section {
+    margin-bottom: 12px;
+}
+
+/* Mode toggle */
+.mode-toggle {
+    display: flex;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 3px;
+    gap: 2px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 7px 0;
+    border: none;
+    background: transparent;
+    color: #888;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.mode-btn.active {
+    background: #0072ff;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 114, 255, 0.3);
+}
+
+.mode-btn:hover:not(.active) {
+    color: #ccc;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Password display */
+.password-display {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 8px;
+    cursor: text;
+}
+
+.password-text {
+    font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 14px;
+    color: #f0f0f0;
+    word-break: break-all;
+    line-height: 1.5;
+    user-select: all;
+    letter-spacing: 0.4px;
+}
+
+/* Strength bar */
+.strength-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.strength-label {
+    font-size: 11px;
+    font-weight: 500;
+    min-width: 65px;
+    text-align: right;
+}
+
+/* Actions */
+.action-row {
+    display: flex;
+    gap: 6px;
+}
+
+.action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.action-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #0072ff, #005ed4);
+    color: white;
+    box-shadow: 0 3px 12px rgba(0, 114, 255, 0.25);
+}
+
+.action-btn.primary:hover {
+    background: linear-gradient(135deg, #2e8aff, #0072ff);
+    box-shadow: 0 5px 18px rgba(0, 114, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+.action-btn.secondary {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ccc;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.action-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* Options */
+.options-section {
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.option-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.option-label {
+    font-size: 12px;
+    color: #999;
+}
+
+.slider-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.option-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 120px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+}
+
+.option-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #0072ff;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 114, 255, 0.4);
+}
+
+.slider-value-input {
+    font-size: 12px;
+    font-weight: 600;
+    color: #7ab8ff;
+    width: 38px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 3px 2px;
+    font-family: inherit;
+    outline: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.slider-value-input::-webkit-outer-spin-button,
+.slider-value-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.slider-value-input:focus {
+    border-color: #0072ff;
+    box-shadow: 0 0 0 2px rgba(0, 114, 255, 0.2);
+}
+
+/* Toggle switch */
+.toggle {
+    position: relative;
+    width: 34px;
+    height: 18px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9px;
+    transition: background 0.2s;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.toggle input:checked+.toggle-slider {
+    background: #0072ff;
+}
+
+.toggle input:checked+.toggle-slider::before {
+    transform: translateX(16px);
+}
+
+/* Footer */
+.popup-footer {
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 10px;
+    color: #555;
+    font-style: italic;
+}

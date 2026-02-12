@@ -1,0 +1,53 @@
+/* 
+ * content.css
+ * Styles for the trigger icon injected into password fields.
+ * The popup itself uses Shadow DOM with inline styles, so it's CSS-isolated.
+ */
+
+.smap-trigger-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.15s ease, background 0.2s ease;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.smap-trigger-icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.smap-trigger-icon:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  background: rgba(0, 114, 255, 0.1);
+}
+
+/* Subtle pulse animation on first appearance */
+@keyframes smap-icon-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
+.smap-trigger-icon {
+  animation: smap-icon-pulse 0.4s ease-out;
+}
